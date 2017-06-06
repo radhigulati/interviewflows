@@ -1,10 +1,9 @@
-<!doctype html>
-  <html>
-    <head>
-      <title>My Hello Web App Project</title> </head>
-    </head>
-    <body>
-      <h1>Hello World!</h1>
-      <p>I am a basic website.</p>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+    Homepage - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h1>Hello World!</h1>
+    <p>{% if number %}Number exists! {% endif %}</p>
+{% endblock content %}
