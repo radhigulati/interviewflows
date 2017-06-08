@@ -4,6 +4,8 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Hello World!</h1>
-    <p>{% if number %}Number exists! {% endif %}</p>
+    {% for question in questions %}
+    <h2>{{ question.name }}</h2>
+    <p>{{ questions.description }} </p>
+    {% endfor %}
 {% endblock content %}

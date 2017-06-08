@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from collection.models import Questions
 
 def index(request):
     # urls.py will catch that someone wants the homepage and points to this
@@ -6,7 +7,9 @@ def index(request):
     # render combines a given template with a given context dictionary and
     # returns a HTTPResponse object with that rendered text
     # render(request, template_name)
-    number = 6
+    # When the index page is viewed, find all the questions in our DB, display
+    # this template, and pass those things along to the template
+    questions = Questions.objects.all()
     return render(request, 'index.html', {
-        'number': number,
+        'questions': questions,
     })
