@@ -9,6 +9,7 @@ def index(request):
     # render(request, template_name)
     # When the index page is viewed, find all the questions in our DB, display
     # this template, and pass those things along to the template
+    #questions = Questions.objects.filter(name__contains='Unique String')
     questions = Questions.objects.all()
     return render(request, 'index.html', {
         'questions': questions,
