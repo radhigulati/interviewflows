@@ -22,5 +22,13 @@ urlpatterns = [
     url(r'^contact/$',
         TemplateView.as_view(template_name='contact.html'),
         name='contact'),
+    #r'^questions/: "starts with questions"
+    #(?P<slug>[-\w]+)/$: "matches any word and call it 'slug' and 'slug' can be
+    # changed for other uses 
+    # 'collection.views.question_detail': We are using the soon to be created
+    # thing_detail view
+    # , name='question_detail': This URL is named question_detail
+    url(r'^questions/(?P<slug>[-\w]+)/$', views.questions_detail,
+    name='questions_detail'),
     url(r'^admin/', admin.site.urls),
 ]

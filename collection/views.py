@@ -14,3 +14,10 @@ def index(request):
     return render(request, 'index.html', {
         'questions': questions,
     })
+
+def questions_detail(request, slug):
+    # grab the object
+    question = Questions.objects.get(slug=slug)
+    # and pass to the template
+    return render(request, 'questions/question_detail.html', {
+    })
