@@ -28,7 +28,7 @@ urlpatterns = [
     # 'collection.views.question_detail': We are using the soon to be created
     # thing_detail view
     # , name='question_detail': This URL is named question_detail
-    url(r'^questions/(?P<slug>[-\w]+)/$', views.questions_detail,
+    url(r'^questions/(?P<slug>[-\w]+)/$', views.question_detail,
         name='questions_detail'),
     url(r'^admin/', admin.site.urls),
 ]
