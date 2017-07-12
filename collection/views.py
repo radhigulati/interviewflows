@@ -36,7 +36,7 @@ def edit_question(request, slug):
         if form.is_valid():
             # save the new data
             form.save()
-            return rediirect('questions_detail', slug=question.slug)
+            return redirect('questions_detail', slug=question.slug)
 
         # otherwise just create the form
     else:
