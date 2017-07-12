@@ -4,10 +4,10 @@
 {% endblock title %}
 
 {% block content %}
-    {% for question in questions %}
-        <h2><a href="{% url 'questions_detail' slug=question.slug %}"
-               {{ question.name }}
-          </a></h2>
-        <p>{{ question.description }} </p>
-    {% endfor %}
+		{% for question in questions %}
+        <h2><a href="{% url 'questions_detail' slug=question.slug %}">
+            {{ question.name }}
+		    </a></h2>
+		    <p>{{ question.description }} </p>
+		{% endfor %}
 {% endblock content %}

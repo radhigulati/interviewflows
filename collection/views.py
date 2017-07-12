@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from collection.forms import QuestionForm
 from collection.models import Questions
 
 def index(request):
@@ -15,9 +16,34 @@ def index(request):
         'questions': questions,
     })
 
-def questions_detail(request, slug):
+
+def question_detail(request, slug):
     # grab the object
     question = Questions.objects.get(slug=slug)
     # and pass to the template
-    return render(request, 'questions/question_detail.html', {
+    return render(request, 'questions/questions_detail.html', {
+    })
+
+def edit_question(request, slug):
+    # grab the object
+    question = Questions.objects.get(slug=slug)
+    # set the form we're using...
+    form_class = QuestionForm
+    # if we're coming tot his view from a submitted form,
+    if request.method == 'POST':
+        # grab the data from the submitted form
+        form = form_class(data=request.POST, instance=question)
+        if form.is_valid():
+            # save the new data
+            form.save()
+            return rediirect('questions_detail', slug=question.slug)
+
+        # otherwise just create the form
+    else:
+        form = form_class(instance=question)
+
+    # and render the template
+    return render(request, 'questions/edit_question.html', {
+        'question': question,
+        'form': form,
     })

@@ -6,4 +6,8 @@
 {% block content %}
     <h1>{{ question.name }}</h1>
     <p>{{ question.description }} </p>
+    <a href="{% url 'edit_question' slug=question.slug %}">
+        Edit me!
+    </a>
 {% endblock content %}
+
