@@ -22,7 +22,8 @@ def question_detail(request, slug):
     question = Questions.objects.get(slug=slug)
     # and pass to the template
     return render(request, 'questions/questions_detail.html', {
-    })
+        'question': question,
+        })
 
 def edit_question(request, slug):
     # grab the object

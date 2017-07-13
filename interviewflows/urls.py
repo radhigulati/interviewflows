@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 from collection import views
@@ -32,5 +32,8 @@ urlpatterns = [
         name='questions_detail'),
     url(r'^questions/(?P<slug>[-\w]+)/edit/$',
         views.edit_question, name='edit_question'),
+    # for any URL path starting with accounts/, search for a matching       URL
+    # path in django-registration-redux's URLs
+    url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^admin/', admin.site.urls),
 ]
